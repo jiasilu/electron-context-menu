@@ -43,7 +43,7 @@ const create = (win, options) => {
 			separator: () => ({type: 'separator'}),
 			lookUpSelection: decorateMenuItem({
 				id: 'lookUpSelection',
-				label: 'Look Up “{selection}”',
+				label: '查找 “{selection}”',
 				visible: process.platform === 'darwin' && hasText && !isLink,
 				click() {
 					if (process.platform === 'darwin') {
@@ -53,7 +53,7 @@ const create = (win, options) => {
 			}),
 			cut: decorateMenuItem({
 				id: 'cut',
-				label: 'Cut',
+				label: '剪切',
 				enabled: can('Cut'),
 				visible: props.isEditable,
 				click(menuItem) {
@@ -64,7 +64,7 @@ const create = (win, options) => {
 			}),
 			copy: decorateMenuItem({
 				id: 'copy',
-				label: 'Copy',
+				label: '复制',
 				enabled: can('Copy'),
 				visible: props.isEditable || hasText,
 				click(menuItem) {
@@ -74,7 +74,7 @@ const create = (win, options) => {
 			}),
 			paste: decorateMenuItem({
 				id: 'paste',
-				label: 'Paste',
+				label: '粘贴',
 				enabled: editFlags.canPaste,
 				visible: props.isEditable,
 				click(menuItem) {
@@ -85,7 +85,7 @@ const create = (win, options) => {
 			}),
 			saveImage: decorateMenuItem({
 				id: 'saveImage',
-				label: 'Save Image',
+				label: '保存图片',
 				visible: props.mediaType === 'image',
 				click(menuItem) {
 					props.srcURL = menuItem.transform ? menuItem.transform(props.srcURL) : props.srcURL;
@@ -94,7 +94,7 @@ const create = (win, options) => {
 			}),
 			saveImageAs: decorateMenuItem({
 				id: 'saveImageAs',
-				label: 'Save Image As…',
+				label: '图片另存为…',
 				visible: props.mediaType === 'image',
 				click(menuItem) {
 					props.srcURL = menuItem.transform ? menuItem.transform(props.srcURL) : props.srcURL;
@@ -103,7 +103,7 @@ const create = (win, options) => {
 			}),
 			copyLink: decorateMenuItem({
 				id: 'copyLink',
-				label: 'Copy Link',
+				label: '复制链接',
 				visible: props.linkURL.length !== 0 && props.mediaType === 'none',
 				click(menuItem) {
 					props.linkURL = menuItem.transform ? menuItem.transform(props.linkURL) : props.linkURL;
@@ -116,7 +116,7 @@ const create = (win, options) => {
 			}),
 			copyImage: decorateMenuItem({
 				id: 'copyImage',
-				label: 'Copy Image',
+				label: '复制图片',
 				visible: props.mediaType === 'image',
 				click() {
 					webContents(win).copyImageAt(props.x, props.y);
@@ -124,7 +124,7 @@ const create = (win, options) => {
 			}),
 			copyImageAddress: decorateMenuItem({
 				id: 'copyImageAddress',
-				label: 'Copy Image Address',
+				label: '复制图片地址',
 				visible: props.mediaType === 'image',
 				click(menuItem) {
 					props.srcURL = menuItem.transform ? menuItem.transform(props.srcURL) : props.srcURL;
@@ -137,7 +137,7 @@ const create = (win, options) => {
 			}),
 			inspect: () => ({
 				id: 'inspect',
-				label: 'Inspect Element',
+				label: '查看元素',
 				click() {
 					win.inspectElement(props.x, props.y);
 
@@ -148,7 +148,7 @@ const create = (win, options) => {
 			}),
 			services: () => ({
 				id: 'services',
-				label: 'Services',
+				label: '服务',
 				role: 'services',
 				visible: process.platform === 'darwin' && (props.isEditable || hasText)
 			})
